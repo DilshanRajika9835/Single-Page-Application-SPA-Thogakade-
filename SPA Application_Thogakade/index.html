@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Single Page Application_Thogakade Pos System</title>
+    <link rel="icon" href="assert/img/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assert/css/bootstrap.css">
+    <link rel="stylesheet" href="assert/css/style.css">
+    <link rel="stylesheet" href="assert/report/w3.css">
+    <link rel="stylesheet" href="assert/css/normalize.css">
+
+
+    <style>
+        .form-control:disabled, .form-control[readonly] {
+            opacity: 1;
+            background-color: #66339914;
+        }
+        @media (min-width: 320px) and (max-width: 1082px) {
+            .table > :not(caption) > * > * {
+                padding: 0;
+                font-size: 12px;
+            }
+        }
+        @media (min-width: 320px) and (max-width: 530px) {
+            .table > :not(caption) > * > * {
+                padding: 0;
+                font-size: 6px;
+            }
+        }
+    </style>
+</head>
+
+<body style="overflow-x: hidden" class="A4 portrait">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark  position-fixed  w-100 " style="z-index: 3 ;top: 0">
+    <div class="container-fluid " >
+        <a id="navhome" class="navbar-brand" href="#"><img src="assert/img/logo.png"alt="image" style="width: 59px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" id="navCustomer">
+                    <a class="nav-link active" aria-current="page" href="#">CUSTOMER</a>
+                </li>
+                <li class="nav-item" id="navOrder">
+                    <a class="nav-link active" aria-current="page" href="#">ORDER</a>
+                </li>
+                <li class="nav-item" id="navItem">
+                    <a class="nav-link active" href="#">ITEM</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Other
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="navabout">
+                        <li><a class="dropdown-item" href="#">About</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!------------------------------------------------------------------------------------------------->
+<section style="position: relative;margin-top: 100px" id="dashboard">
+    <div class="container-fluid mt-5 " id="menuForm">
+        <div class="row justify-content-center  ">
+            <div class="card m-1  small" style="width: 18rem;border: 1px solid black" >
+                <img src="assert/img/customer.png" class="card-img-top mt-1" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title fs-1 text-success " style="font-family: 'Bell MT',sans-serif;font-weight: 600">Customer</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <!--------------------------->
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#Customer_form">
+                        view..
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="Customer_form" tabindex="-1" aria-labelledby="customer_label"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-xl ">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="customer_label">List Of Customer</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="table caption-top table-hover border "
+                                           id="customer_table" >
+                                        <caption>List of Customers</caption>
+                                        <thead class="bg-warning table-bordered">
+                                        <tr id="cust_table">
+                                            <th scope="col">No</th>
+                                            <th scope="col">Customer ID</th>
+                                            <th scope="col">First Name</th>
+                                            <th scope="col">Last Name</th>
+                                            <th scope="col">Address </th>
+                                            <th scope="col">City</th>
+                                            <th scope="col">Country</th>
+                                            <th scope="col">Contact No</th>
+                                            <th scope="col">Zip Code</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tblCustomerTM">
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--------------------------->
+                </div>
+            </div>
+            <div class="card m-1" style="width: 18rem;border: 1px solid black">
+                <img src="assert/img/item.png" class="card-img-top mt-1" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title fs-1 text-success " style="font-family: 'Bell MT',sans-serif;font-weight: 600">
+                        Item</h5>
+
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <!--------------------------->
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#items_form">
+                        view..
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="items_form" tabindex="-1" aria-labelledby="item_label"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="item_label">List Of Items</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="table caption-top table-hover border" id="item_table" >
+                                        <caption>List of Item Table</caption>
+                                        <thead class="bg-warning table-bordered">
+                                        <tr>
+                                            <th scope="col" >No</th>
+                                            <th scope="col">Item Code</th>
+                                            <th scope="col">Item Name</th>
+                                            <th scope="col">Description </th>
+                                            <th scope="col">Unit Price</th>
+                                            <th scope="col">Qty On Hand</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tblItemTM">
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--------------------------->
+                </div>
+            </div>
+
+            <div class="card m-1" style="width: 18rem;border: 1px solid black">
+                <img src="assert/img/order.png" class="card-img-top mt-1" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title fs-1 text-success " style="font-family: 'Bell MT',sans-serif;font-weight: 600">
+                        Orders</h5>
+
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                 <!--------------------------->
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#orders">
+                        view..
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="orders" tabindex="-1" aria-labelledby="orders_label"
+                         aria-hidden="true">
+                        <div class="modal-dialog  modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="orders_label">List Of Orders</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="table caption-top table-hover border" id="order_table" >
+                                        <caption>List of Orders</caption>
+                                        <thead class="bg-warning table-bordered">
+                                        <tr>
+                                            <th scope="col" >No</th>
+                                            <th scope="col">Order ID</th>
+                                            <th scope="col">Customer ID</th>
+                                            <th scope="col">Total</th>
+                                            <th scope="col">Sub Total </th>
+                                            <th scope="col">Cash</th>
+                                            <th scope="col">Discount</th>
+                                            <th scope="col">Balance</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="OrderListTM" >
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 <!--------------------------->
+                </div>
+            </div>
+            <div class="card m-1" style="width: 18rem;border: 1px solid black">
+                <img src="assert/img/setting.png" class="card-img-top mt-1" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title fs-1 text-success " style="font-family: 'Bell MT',sans-serif;font-weight: 600">
+                        Setting</h5>
+
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#setting_form">
+                        view..
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="setting_form" tabindex="-1" aria-labelledby="setting_label"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="setting_label">List Of Setting </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!------------------------------------------------------------------------------------------------->
+<!---------------------------------Customer Form----------------------------------------------------->
+<div class="container-fluid  mb-3 " id="Cust_Form"  style="margin-top: 63px">
+    <div class="row">
+        <img src="assert/img/CustomerForm.png" alt="image" class="col-12 col-sm-12 col-xl-6 col-md-12 col-xxl-6  ">
+        <div class="border col-12 col-sm-12 col-xl-6 col-md-12 col-xxl-6 " >
+            <form class="row g-3">
+                <div class="col-md-6">
+                    <label for="txtcustid" class="form-label"  style="color: black;font-weight:bold ">Customer
+                        ID</label>
+                    <input type="text" class="form-control" id="txtcustid" placeholder="CUS0001"
+                           style="color: red;font-weight:bold " disabled>
+                        <span style="font-size: 12px;color: red" id="lblcustID">your input format is wrong</span>
+                </div>
+                <div class="col-md-12">
+                    <label for="txtcustfirstname" class="form-label" style="color: black;font-weight:bold" >First
+                        Name</label>
+                    <input type="text" class="form-control" id="txtcustfirstname" placeholder="Dilshan Rajika" required>
+                    <span style="font-size: 12px;color: red" id="lblfname">your input format is wrong</span>
+                </div>
+                <div class="col-md-12">
+                    <label for="txtcustlastname" class="form-label" style="color: black;font-weight:bold">Last
+                        Name</label>
+                    <input type="text" class="form-control" id="txtcustlastname"  placeholder="Withanachchi" required>
+                    <span style="font-size: 12px;color: red" id="lbllname">your input format is wrong</span>
+                </div>
+                <div class="col-12">
+                    <label for="txtaddress" class="form-label" style="color: black;font-weight:bold">Address</label>
+                    <input type="text" class="form-control" id="txtaddress" placeholder="1234 Main St" required>
+                    <span style="font-size: 12px;color: red" id="lbladdress">your input format is wrong</span>
+                </div>
+                <div class="col-6">
+                    <label for="txtphoneno" class="form-label" style="color: black;font-weight:bold">Contact No</label>
+                    <input type="number" class="form-control" id="txtphoneno" placeholder="+94 766654345" required>
+                    <span style="font-size: 12px;color: red" id="lblphoneno">your input format is wrong</span>
+                </div>
+                <div class="col-md-6">
+                    <label for="txtcountry" class="form-label" style="color: black;font-weight:bold">Country</label>
+                    <select id="txtcountry" class="form-select" required type="text">
+                        <option selected disabled value="">Choose..</option>
+                        <option>Sri Lanka</option>
+                        <option>India</option>
+                        <option>America</option>
+                        <option>London</option>
+                        <option>Japan</option>
+                    </select>
+                </div>
+                <div class="col-md-6 ">
+                    <label for="txtcity" class="form-label" style="color: black;font-weight:bold">City</label>
+                    <select id="txtcity" class="form-select" type="country" required>
+                        <option selected disabled value="">Choose..</option>
+                        <option>Mathara</option>
+                        <option>Galle</option>
+                        <option>Colombo</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="txtzipcode" class="form-label" style="color: black;font-weight:bold">Zip Code</label>
+                    <select id="txtzipcode" class="form-select" required type="zipcode">
+                        <option selected disabled value="">Choose..</option>
+                        <option>3456</option>
+                        <option>4566</option>
+                        <option>4569</option>
+                    </select>
+                </div>
+                <section class="btn-group p-2 ">
+                    <div class="col-2 btn-group w-20 m-1">
+                        <button type="submit" class="btn btn-primary"  onclick="clearCustomer()">Clear
+                        </button>
+                    </div>
+                    <div class="col-2 btn-group w-20 m-1">
+                        <button type="submit" class="btn btn-danger" id="btnDeleteCustomer" onclick="deleteCustomer()">
+                            Delete</button>
+                    </div>
+                    <div class="col-2 btn-group w-20 m-1  ">
+                        <button type="submit" class="btn btn-warning" id="btnUpdateCustomer" onclick="updateCustomer()">
+                            Update</button>
+                    </div>
+                    <div class="col-2 btn-group w-20 m-1 ">
+                        <button  type="submit" class="btn btn-success" id="btnSaveCustomer"
+                                 onclick="saveCustomer()">Save
+                        </button>
+                    </div>
+                </section>
+
+
+            </form>
+
+        </div>
+        <section class="container-fluid">
+            <div class="row">
+                <div class="border  ">
+                    <table class="table caption-top table-hover border" id="CustomerTable" >
+                        <caption>List of Customers</caption>
+                        <thead class="bg-warning table-bordered">
+                        <tr>
+                            <th scope="col" >No</th>
+                            <th scope="col">Customer ID</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Address </th>
+                            <th scope="col">City</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Contact No</th>
+                            <th scope="col">Zip Code</th>
+                        </tr>
+                        </thead>
+                        <tbody id="cust_tblbody">
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+<!------------------------------------------------------------------------------------------------->
+
+<!---------------------------------------Order Form----------------------------------------------->
+<div class="container-fluid  mb-3 " id="order_Form" style="margin-top: 63px" >
+    <div class="row">
+        <img src="assert/img/orderform.png" alt="image"  class="col-12 col-sm-12 col-xl-6 col-md-12 col-xxl-6  ">
+        <div  class="col-12 col-sm-12 col-xl-6 col-md-12 col-xxl-6  ">
+            <form class="row g-3 border mt-3 ">
+                <div class="col-7">
+                    <label for="txtOrderID" class="form-label" style="color: black ;font-weight: bold">Order ID</label>
+                    <input  style="color: red ;font-weight: bold" type="text" class="form-control " id="txtOrderID"
+                            placeholder="DEO0934" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label for="ordCustID" class="form-label" style="color: black ;font-weight: bold">Customer_ID
+                    </label>
+                    <select id="ordCustID" class="form-select" required >
+                        <option selected  value="" disabled>Choose..</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="ordItemCode" class="form-label" style="color: black ;font-weight: bold">Item_ID
+                    </label>
+                    <select id="ordItemCode" class="form-select" required >
+                        <option selected  value="" disabled>Choose..</option>
+                    </select>
+                </div>
+
+                <div class="col-12 m-1">
+                    <label for="ordItemName" class="form-label" style="color: black ;font-weight: bold">Item
+                        Name</label>
+                    <input type="text" class="form-control" id="ordItemName" disabled
+                           style="color:black;font-weight: initial">
+                </div>
+                <div class="col-12 m-1">
+                    <label for="ordDescription" class="form-label" style="color: black ;font-weight: bold">Item
+                        Description</label>
+                    <input type="text" class="form-control" id="ordDescription" disabled
+                           style="color:black;font-weight: initial">
+                </div>
+                <div class="col-3 m-1">
+                    <label for="ordPrice" class="form-label" style="color: black ;font-weight: bold">Unit_Price</label>
+                    <input type="number" class="form-control" id="ordPrice"  disabled
+                           style="color:black;font-weight: initial">
+                </div>
+                <div class="col-3 m-1">
+                    <label for="ordQtyOnHand" class="form-label " style="color: black ;font-weight: bold">
+                        Qty_OnHand</label>
+                    <input type="number" class="form-control " id="ordQtyOnHand"  disabled
+                           style="color:black;font-weight: initial">
+                </div>
+                <div class="col-3 m-1">
+                    <label for="orderQty" class="form-label" style="color: black ;font-weight: bold">Order_Qty</label>
+                    <input type="number" class="form-control" id="orderQty" placeholder="40">
+                </div>
+                <section class="btn-group ">
+                    <div class="col-2 btn-group m-1 w-20">
+                        <button type="submit" class="btn btn-primary" onclick="clearOrdText() ">Clear</button>
+                    </div>
+                    <div class="col-2 btn-group m-1 w-20">
+                        <button type="submit" class="btn btn-danger" >Delete</button>
+                    </div>
+                    <div class="col-2 btn-group  m-1 w-20">
+                        <button type="submit" class="btn btn-warning" >Update</button>
+                    </div>
+                    <div class="col-2 btn-group m-1 w-20">
+                        <button type="submit" class="btn btn-success" onclick="SelectItem()">Add</button>
+                    </div>
+                </section>
+            </form>
+        </div>
+        <div class=" border  mt-3">
+            <table class="table caption-top table-hover table-bordered" id="tblOrder">
+                <caption>List of Items</caption>
+                <thead id="orderbill">
+                <tr class="bg-warning">
+                    <th scope="col" >No</th>
+                    <th scope="col" >Item Code</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Description </th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Total</th>
+
+                </tr>
+                </thead>
+                <tbody id="tblOrder_listbody">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <form class="m-1" style="border: 1px solid blue;border-radius: 5px">
+        <section class="container-fluid border">
+            <div class="row ">
+                <div class="col-3 fw-bold" id="id1">
+                    <label for="ORDtotal" class="col-form-label  fs-4" style="color: #0784cb">Total:</label>
+                    <input type="number" class="form-control " id="ORDtotal" placeholder=" Total Cost Rs/=" disabled>
+                </div>
+                <div class="col-3 fw-bold "  id="id2">
+                    <label for="ORDsubtotal" class=" col-form-label  fs-5" style="color: #ef5350">SubTotal:</label>
+                    <input  type="number" class="form-control " id="ORDsubtotal"
+                           placeholder=" SubTotal Rs/="
+                           disabled>
+                </div>
+                <div class="col-3 fw-bold"  id="id3">
+                    <label for="ORDcash" class=" col-form-label  fs-5 " style="color: #0784cb">Cash:</label>
+                    <input type="number" class="form-control " id="ORDcash" placeholder=" Total Cost Rs/="
+                           >
+                </div>
+                <div class="col-3 fw-bold"  id="id4">
+                    <label for="ORDdiscount" class=" col-form-label  fs-5" style="color: #0784cb">Discount:</label>
+                    <input type="number" class="form-control " id="ORDdiscount" placeholder=" Discount">
+                </div>
+                <div class="col-3 fw-bold"  id="id5">
+                    <label for="ORDbalance" class=" col-form-label  fs-5" style="color: #0784cb">Balance:</label>
+                    <input type="number" class="form-control " id="ORDbalance" placeholder=" Total Cost Rs/="
+                           disabled>
+                </div>
+                <div class="col-12 mt-2 text-end">
+                    <button type="button" class="btn btn-danger mb-2">Cancel</button>
+                    <button type="button" class="btn btn-success mb-2" id="btnPlaceOrder" onclick="printReport()">Place
+                        Order</button>
+                </div>
+            </div>
+        </section>
+
+
+    </form>
+</div>
+
+<div class="container-fluid  mb-3" id="itemForm" style="margin-top: 63px">
+    <div class="row">
+        <img src="assert/img/itemForm.png" alt="image"  class="col-12 col-sm-12 col-xl-6 col-md-12 col-xxl-6  ">
+
+        <div class=" border col-12 col-sm-12 col-xl-6 col-md-12 col-xxl-6 " >
+            <form class="row g-3">
+                <div class="col-md-6">
+                    <label for="txtitemcode" class="form-label"
+                           style="font-weight: bold">Item Code</label>
+                    <input type="text" class="form-control" id="txtitemcode" placeholder="MDE09736"
+                           style="color: red;font-weight:bold">
+                    <span style="font-size: 12px;color: red" id="lblitemcode">your input format is wrong</span>
+
+                </div>
+                <div class="col-md-6">
+                    <label for="txtitemname" class="form-label" style="font-weight: bold" >Item Name</label>
+                    <input type="text" class="form-control" id="txtitemname" placeholder="Anchor Milk " required>
+                    <span style="font-size: 12px;color: red" id="lblitemname">your input format is wrong</span>
+
+                </div>
+                <div class="col-12">
+                    <label for="txtItemdescription" class="form-label" style="font-weight: bold">Description</label>
+                    <input type="text" class="form-control" id="txtItemdescription" placeholder="Milk pack 1Kg.." required>
+                    <span style="font-size: 12px;color: red" id="lbldescription">your input format is wrong</span>
+
+                </div>
+                <div class="col-6">
+                    <label for="txtItemunitprice" class="form-label" style="font-weight: bold">Unit_Price</label>
+                    <input type="number" class="form-control" id="txtItemunitprice" placeholder="Rs.400.00/="
+                          required >
+                    <span style="font-size: 12px;color: red" id="lblunitprice">your input format is wrong</span>
+
+                </div>
+                <div class="col-4">
+                    <label for="txtItemqtyonhand" class="form-label" style="font-weight: bold">Qty_OnHand</label>
+                    <input type="number" class="form-control" id="txtItemqtyonhand" placeholder="40" required>
+                    <span style="font-size: 12px;color: red" id="lblqtyonhand">your input format is wrong</span>
+
+                </div>
+
+                <section class="btn-group ">
+
+                    <div class="col-2 btn-group m-1 w-20">
+                        <button type="submit" class="btn btn-danger" id="btnDeleteItem" onclick="deleteItem()">Delete
+                        </button>
+                    </div>
+                    <div class="col-2 btn-group  m-1 w-20">
+                        <button type="submit" class="btn btn-warning" id="btnUpdateItem" onclick="UpdateItem()">Update
+                        </button>
+                    </div>
+                    <div class="col-2 btn-group m-1 w-20">
+                        <button type="submit" class="btn btn-primary" id="btnNewItem" onclick="clearItem()">Clear
+                        </button>
+                    </div>
+                    <div class="col-2 btn-group m-1 w-20">
+                        <button type="submit" class="btn btn-success" id="btnSaveItem" onclick="SaveItem()">Save
+                        </button>
+                    </div>
+
+                </section>
+
+
+            </form>
+        </div>
+        <div class="col-sm border m-1">
+            <table class="table caption-top table-hover table-bordered"  style="font-family:
+            'Bell MT',sans-serif">
+                <caption>List of Items</caption>
+                <thead class=" bg-warning">
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Item Code</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Description </th>
+                    <th scope="col">Unit Price(Rs./=)</th>
+                    <th scope="col">Qty_OnHand</th>
+
+                </tr>
+                </thead>
+                <tbody id="item_tblbody">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+<!------------------------------------------------------------------------------------------------->
+<script src="assert/js/bootstrap.js"></script>
+<script src="assert/jquery/jquery-3.6.0.min.js"></script>
+<script src="model/CustomerDTO.js"></script>
+<script src="model/OrderDTO.js"></script>
+<script src="model/ItemDTO.js"></script>
+<script src="model/tm/OrderTM.js"></script>
+<script src="model/tm/OrderDetailTM.js"></script>
+<script src="controller/CustomerController.js"></script>
+<script src="controller/DashBoardController.js"></script>
+<script src="controller/OrderController.js"></script>
+<script src="controller/ItemController.js"></script>
+<script src="assert/report/printThis.js"></script>
+<script src="assert/report/PrintReport.js"></script>
+<script src="db/DB.js"></script>
+
+
+</body>
+</html>
